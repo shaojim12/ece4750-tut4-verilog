@@ -1,4 +1,4 @@
-//========================================================================
+ //========================================================================
 // RegIncr Ad-Hoc Testing
 //========================================================================
 
@@ -21,6 +21,13 @@ module top;
   // This simulator script is incomplete. As part of the tutorial you
   // will need to instantiate and connect a RegIncr model here.
   // '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+  tut4_verilog_regincr_RegIncr reg_incr
+  (
+    .clk     (clk),
+    .reset   (reset), 
+    .in      (in), 
+    .out     (out)
+  );
 
   // Verify functionality
 
@@ -39,7 +46,9 @@ module top;
     // Test cases
 
     in = 8'h00;
+    
     #10;
+    $display( "out = %x", out );
     if ( out != 8'h01 ) begin
       $display( "ERROR: out, expected = %x, actual = %x", 8'h01, out );
       $finish;
@@ -47,7 +56,7 @@ module top;
 
     in = 8'h13;
     #10;
-    if ( out != 8'h14 ) begin
+    if ( out != 8'h15 ) begin
       $display( "ERROR: out, expected = %x, actual = %x", 8'h14, out );
       $finish;
     end

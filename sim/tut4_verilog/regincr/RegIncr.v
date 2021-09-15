@@ -10,15 +10,15 @@
 
 module tut4_verilog_regincr_RegIncr
 (
-  input  logic       clk,
-  input  logic       reset,
-  input  logic [7:0] in,
-  output logic [7:0] out
+  input         clk,
+  input         reset,
+  input   [7:0] in,
+  output  [7:0] out
 );
 
   // Sequential logic
 
-  logic [7:0] reg_out;
+  reg [7:0] reg_out;
   always @( posedge clk ) begin
     if ( reset )
       reg_out <= 0;
@@ -30,6 +30,12 @@ module tut4_verilog_regincr_RegIncr
   // This model is incomplete. As part of the tutorial you will insert
   // combinational logic here to model the incrementer logic.
   // '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+  reg [7:0] temp_wire;
+  always @(*) begin
+    temp_wire = reg_out + 1;
+  end
+
+  assign out = temp_wire;
 
 endmodule
 

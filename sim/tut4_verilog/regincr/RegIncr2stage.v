@@ -35,6 +35,23 @@ module tut4_verilog_regincr_RegIncr2stage
   // instantiate and connect the second stage of this two-stage
   // registered incrementer here.
   // '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+  logic [7:0] reg_incr_1_out;
+  tut4_verilog_regincr_RegIncr reg_incr_1
+  (
+    .clk    (clk), 
+    .reset  (reset), 
+    .in     (reg_incr_0_out), 
+    .out    (reg_incr_1_out)
+  );
+
+  tut4_verilog_regincr_RegIncr reg_incr_2
+  (
+    .clk    (clk), 
+    .reset  (reset), 
+    .in     (reg_incr_1_out), 
+    .out    (out)
+  );
+  
 
 endmodule
 
